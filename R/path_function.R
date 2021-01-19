@@ -1,32 +1,5 @@
 
-
-
-library(igraph)
-
-
-g <- as.matrix(read.table(text=
-  "C T1 V1 T2 V2 WS1 WS2 TC1 TC2 RRC
- C    0  8 10 12  0   0   0   0   0   0
- T1   8  0  2  0  0   0   0   0  12   0
- V1  10  2  0  0  2   0   0   0   0   0
- T2  12  0  0  0  0   5   0  10   0   0
- V2   0  0  2  0  0   1   7   0   0   0
- WS1  0  0  0  5  1   0   0   2   0   0
- WS2  0  0  0  0  7   0   0   2   2   0
- TC1  0  0  0 10  0   2   2   0   5   8
- TC2  0 12  0  0  0   0   2   5   0   3
- RRC  0  0  0  0  0   0   0   8   3   0", header=T))
-
-
-g <- graph.adjacency(g, mode="undirected", weighted=TRUE,diag = FALSE)
-str(g)
-#plot(g)
-
-plot(g,edge.label=E(g)$weight)
-
-
-
-#la fonction dijkstra donne la distance entre le noeud de départ et de tous les autres noeuds.
+#la fonction dijkstra donne la distance entre le noeud de dÃ©part et de tous les autres noeuds.
 
 dijkstra <- function(g, start) {
   # Set all distances to infinity
@@ -38,7 +11,7 @@ dijkstra <- function(g, start) {
   distance_g[start] <- 0
 
   # Q, the queue that initially contains all the vertices
-  # on crée un ensemble de sommet Q
+  # on crÃ©e un ensemble de sommet Q
   Q <- V(g)$name
 
   # Previous node in optimal path
@@ -82,7 +55,7 @@ dijkstra <- function(g, start) {
 results <- dijkstra(g, start = "C")
 
 #Nous pouvons maintenant lire le chemin le plus court
-#de la source à la cible par itération inverse:
+#de la source Ã  la cible par itÃ©ration inverse:
 
 shortDPath <- function(results) {
   Seq <- vector(mode = "character", length = 0L)
