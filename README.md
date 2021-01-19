@@ -12,5 +12,8 @@ dans le cas le plus général où les poids des arcs peuvent avoir des valeurs n
 
 # Algorithme de Dijkstra
 Cet algorithme résout le problème du chemin le plus court d'un graphe orienté  dans lequel les poids des arcs sont positives.
+
+Animation ci-dessous illustre le fonctionemenet de cet algorithme :
+
 ![Dijkstra_Animation](https://user-images.githubusercontent.com/75957755/104924965-76eed300-599e-11eb-9ab8-c849a5fa9b7e.gif)
 
