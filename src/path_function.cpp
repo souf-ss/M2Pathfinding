@@ -7,7 +7,7 @@ using namespace std;
 // [[Rcpp::export]]
 
 // function qui determine le sommet ayant la plus petite distance
-int findMinVertex(NumericVector distance ,LogicalVector visited, int n){
+int find_distance_min(NumericVector distance ,LogicalVector visited, int n){
 
   int minVertex=-1;
   for (int i=0 ;i< n; i++){
@@ -25,14 +25,14 @@ int findMinVertex(NumericVector distance ,LogicalVector visited, int n){
 // path from source to j
 // using parent array
 // [[Rcpp::export]]
-void printPath(NumericVector parent, int j)
+void short_path(NumericVector parent, int j)
 {
 
   // Base Case : If j is source
   if (parent[j] == - 1)
     return;
 
-  printPath(parent, parent[j]);
+  short_path(parent, parent[j]);
 
   Rcout<< j;
 }
@@ -41,14 +41,14 @@ void printPath(NumericVector parent, int j)
 // the constructed distance
 // array
 // [[Rcpp::export]]
-void printSolution(NumericVector dist, int n,NumericVector parent)
+void path(NumericVector dist, int n,NumericVector parent)
 {
   int src = 0;
   Rcout<<"V  | Dist | Path";
   for (int i = 1; i < n; i++)
   {
     Rcout<<endl<<src<<"->"<<i<<"| "<<dist[i]<<" | "<<src;
-    printPath(parent, i);
+    short_path(parent, i);
   }
 }
 
@@ -72,7 +72,7 @@ void dijkstra_cpp(NumericMatrix edges){
 
   for (int i=0;i<n-1;i++){
 
-    int minVertex=findMinVertex(distance,visited,n);
+    int minVertex=find_distance_min(distance,visited,n);
 
     visited[minVertex]=true;
 
@@ -91,7 +91,7 @@ void dijkstra_cpp(NumericMatrix edges){
 
 
   Rcout<<endl<<"les chemins les plus courts partant du sommet d'origine "<<endl;
-  printSolution(distance, n, parent);
+  path(distance, n, parent);
 
 
 }
