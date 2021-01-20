@@ -1,6 +1,5 @@
 
 library(igraph)
-library(Algorithmique)
 
 #exemple graphe a partir de la librairie igraph
 g <- as.matrix(read.table(text=
